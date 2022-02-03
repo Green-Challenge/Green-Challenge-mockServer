@@ -9,6 +9,8 @@ export const user = [
     nickName: "koo",
     siNm: "서울시",
     sggNm: "강남구",
+    dayOfChallenge: 20,
+    amountOfTree: 10,
   },
 ];
 
@@ -45,5 +47,16 @@ export async function updateProfile(modifyProfileReq) {
     nickName: user.nickName,
     siNm: user.siNm,
     sggNm: user.sggNm,
+  };
+}
+
+export async function getChallengeShortById(userId) {
+  const user = await findById(userId);
+  if (!user) {
+    return null;
+  }
+  return {
+    dayOfChallenge: user.dayOfChallenge,
+    amountOfTree: user.amountOfTree,
   };
 }
